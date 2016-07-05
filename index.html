@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="http://192.168.1.100:8081/angular-1.5.5/angular.js"></script>
+	<script type="text/javascript" src="ng-device-detector.js"></script>
+	<script type="text/javascript" src="re-tree.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<title>Device Detector</title>
+	<meta charset="UTF-8" />
+</head>
+<body ng-app="ddApp">
+	<div ng-controller="ddController as VM">
+		You are using <b>{{VM.data.browser}}</b> Browser<hr />
+		<p>You are using <b>{{VM.data.browser}}</b> on <b>{{VM.data.os}} ({{VM.data.os_version}})</b>.</p>
+            <p>Your <b>{{VM.data.browser}}</b> version is <b>{{VM.data.browser_version}}</b></p>
+            <p>Device - <b></b>{{VM.data.device}}</p>
+            <p>Complete deviceDetector data - <b></b><pre>{{VM.allData}}<pre></p>
+            <hr />
+            <p>
+            	{{width}}x{{height}}
+            </p>
+	</div>
+	<div>
+		<device></device>
+	</div>
+
+</body>
+</html>

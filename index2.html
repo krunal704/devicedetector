@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Screen Size</title>
+	
+	<script type="text/javascript" src="//192.168.1.100:8081/angular-1.5.5/angular.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<meta charset="UTF-8" />
+</head>
+<body ng-app = "rApp">
+<div ng-controller="rC">
+<p ng-bind="str"></p>
+<br />
+{{width}}x{{height}}
+<P>
+	{{line}}
+</P>
+<p>
+	{{availR}}
+</p>
+<p>
+	Color Depth : {{colordepth}}
+</p>
+<p>
+	Pixel Depth : {{pixeldepth}}
+</p>
+<p>
+	<button onclick="goBack()" style="color: white; background-color: blue; height: 100px; width: 100px;"> ←</button>
+	<button onclick="goForward()" style="color: white; background-color: blue; height: 100px; width: 100px;">→</button>	
+</p>
+<p>
+	
+</p>
+</div>
+<script >
+	  document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Model: '    + device.model    + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+    }
+
+</script>
+<p id="deviceProperties">Loading device properties...</p>
+
+<script>
+
+		angular.module("rApp",[])
+				.controller("rC", function ($scope) {
+					var height = (window.innerHeight >0)  ? window.innerHeight : screen.height;
+					var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+					$scope.str = "This shows devices height & width";
+		 			$scope.height = height;
+		 			$scope.width = width;
+		 			$scope.line = screen.width + " x "+ screen.height;
+		 			$scope.availR =screen.availWidth + " x "+ screen.availHeight; 
+		 			$scope.colordepth = screen.colorDepth;
+		 			$scope.pixeldepth = screen.pixelDepth;
+					
+				});
+		
+		</script>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+		function goForward() {
+			window.history.forward();
+		}
+		
+	</script>
+</body>
+
+</html>
